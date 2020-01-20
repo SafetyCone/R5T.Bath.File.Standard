@@ -15,7 +15,10 @@ namespace R5T.Bath.File.Standard
             where THumanOutputFileNameProvider: class, IHumanOutputFileNameProvider
             where TStringlyTypedPathOperator: class, IStringlyTypedPathOperator
         {
-            services.AddHumanOutputFilePathProvider_TemporaryDirectoryBased<THumanOutputFileNameProvider, TStringlyTypedPathOperator>();
+            services
+                .AddSingleton<IHumanOutput, FileHumanOutput>()
+                .AddHumanOutputFilePathProvider_TemporaryDirectoryBased<THumanOutputFileNameProvider, TStringlyTypedPathOperator>()
+                ;
 
             return services;
         }
@@ -33,7 +36,10 @@ namespace R5T.Bath.File.Standard
         /// </summary>
         public static IServiceCollection AddFileHumanOutput(this IServiceCollection services)
         {
-            services.AddHumanOutputFilePathProvider_TemporaryDirectoryBased<StringlyTypedPathOperator>();
+            services
+                .AddSingleton<IHumanOutput, FileHumanOutput>()
+                .AddHumanOutputFilePathProvider_TemporaryDirectoryBased<StringlyTypedPathOperator>()
+                ;
 
             return services;
         }
