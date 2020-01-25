@@ -32,6 +32,7 @@ namespace R5T.Bath.File.Standard
         }
 
         /// <summary>
+        /// Adds a file-based <see cref="IHumanOutput"/> service.
         /// Uses the <see cref="DefaultHumanOutputFileNameProvider"/> service.
         /// </summary>
         public static IServiceCollection AddFileHumanOutput(this IServiceCollection services)
